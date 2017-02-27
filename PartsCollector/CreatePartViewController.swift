@@ -36,6 +36,17 @@ class CreatePartViewController: UIViewController, UIImagePickerControllerDelegat
         //this shows another ViewController
         
     }
+        // this is where we get information on what image was selected
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image3 = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        partImageView.image = image3
+        // this takes a selected image and shows it in the image view in our app
+        
+       imagePicker44.dismiss(animated: true, completion: nil)
+        // this dissmises the pick image view
+        
+    }
 
     @IBAction func cameraTapped(_ sender: Any) {
     }
