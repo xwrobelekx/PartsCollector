@@ -14,15 +14,15 @@ class CreatePartViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var titleTextField: UITextField!
     
     var imagePicker44 = UIImagePickerController()
-    //this is a new propert called imagePicker which alows us to select picture form users library or take a new picture
+        //this is a new propert called imagePicker which alows us to select picture form users library or take a new picture
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         imagePicker44.delegate = self
-        // when object is using a delegate, its pulling an required informations it needs to get set up.
-        // imagePicker44. delegate = self which means its equal to the class above, and we need to set up the class by adding UIImagePickerControllerDelegate, and UINavigationControllerDelegate
+            // when object is using a delegate, its pulling an required informations it needs to get set up.
+            // imagePicker44. delegate = self which means its equal to the class above, and we need to set up the class by adding UIImagePickerControllerDelegate, and UINavigationControllerDelegate
         
     }
 
@@ -30,21 +30,21 @@ class CreatePartViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func photosTapped(_ sender: Any) {
         
         imagePicker44.sourceType = .photoLibrary
-        // gets existing photos from device photo Library
+            // gets existing photos from device photo Library
         
         present(imagePicker44, animated: true, completion: nil)
-        //this shows another ViewController
+            //this shows another ViewController
         
     }
-        // this is where we get information on what image was selected
+            // this is where we get information on what image was selected
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image3 = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         partImageView.image = image3
-        // this takes a selected image and shows it in the image view in our app
+            // this takes a selected image and shows it in the image view in our app
         
        imagePicker44.dismiss(animated: true, completion: nil)
-        // this dissmises the pick image view
+            // this dissmises the pick image view
         
     }
 
@@ -57,11 +57,13 @@ class CreatePartViewController: UIViewController, UIImagePickerControllerDelegat
         let part = Parts(context: context)
             // new property of type Parts
         part.title = titleTextField.text
-        
+            // asigns text from text field to part property
         part.image = UIImagePNGRepresentation(partImageView.image!) as NSData?
+            // assigns image from imageView to part property
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            // saves the context in Core Data
         
-(UIApplication.shared.delegate as! AppDelegate).saveContext()
-        
+        navigationController!.popViewController(animated: true)
         
     }
 }
