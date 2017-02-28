@@ -51,5 +51,17 @@ class CreatePartViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func cameraTapped(_ sender: Any) {
     }
     @IBAction func addTapped(_ sender: Any) {
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            // creates context
+        let part = Parts(context: context)
+            // new property of type Parts
+        part.title = titleTextField.text
+        
+        part.image = UIImagePNGRepresentation(partImageView.image!) as NSData?
+        
+(UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        
     }
 }
