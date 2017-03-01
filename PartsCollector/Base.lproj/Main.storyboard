@@ -39,7 +39,7 @@
                     <navigationItem key="navigationItem" id="dLx-89-M4E">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ucE-9P-Evk">
                             <connections>
-                                <segue destination="PJk-E0-lAw" kind="show" id="Wnx-gL-W2L"/>
+                                <segue destination="PJk-E0-lAw" kind="show" identifier="partSegue" id="Wnx-gL-W2L"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -64,23 +64,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="part.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cUB-6B-jCv">
-                                <rect key="frame" x="16" y="84" width="343" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="lWz-NN-05Q"/>
-                                    <constraint firstAttribute="height" constant="200" id="zxa-lL-GfG"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="84" width="343" height="213"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oB7-aj-9Ec">
-                                <rect key="frame" x="16" y="318" width="343" height="30"/>
+                                <rect key="frame" x="16" y="331" width="343" height="30"/>
                                 <color key="textColor" red="0.63003966968911918" green="0.63003966968911918" blue="0.63003966968911918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNP-W4-hLD">
-                                <rect key="frame" x="172" y="370" width="30" height="30"/>
+                                <rect key="frame" x="172" y="383" width="30" height="30"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
                                     <action selector="addTapped:" destination="PJk-E0-lAw" eventType="touchUpInside" id="Kt2-Yf-joe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xj7-as-TC6">
+                                <rect key="frame" x="165" y="428" width="45" height="30"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteButton:" destination="PJk-E0-lAw" eventType="touchUpInside" id="ejj-Of-z9J"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -91,8 +94,10 @@
                             <constraint firstItem="cUB-6B-jCv" firstAttribute="top" secondItem="Vew-Dg-V4J" secondAttribute="bottom" constant="20" id="SdX-qG-eFu"/>
                             <constraint firstItem="cUB-6B-jCv" firstAttribute="centerX" secondItem="5Pp-pr-A9l" secondAttribute="centerX" id="VBk-fs-sJt"/>
                             <constraint firstItem="oB7-aj-9Ec" firstAttribute="width" secondItem="cUB-6B-jCv" secondAttribute="width" id="ase-ja-w7X"/>
+                            <constraint firstItem="Xj7-as-TC6" firstAttribute="top" secondItem="JNP-W4-hLD" secondAttribute="bottom" constant="15" id="bwj-ck-6BF"/>
                             <constraint firstItem="oB7-aj-9Ec" firstAttribute="top" secondItem="cUB-6B-jCv" secondAttribute="bottom" constant="34" id="eYF-6T-rhM"/>
                             <constraint firstItem="oB7-aj-9Ec" firstAttribute="centerX" secondItem="5Pp-pr-A9l" secondAttribute="centerX" id="em9-LL-dHt"/>
+                            <constraint firstItem="Xj7-as-TC6" firstAttribute="centerX" secondItem="5Pp-pr-A9l" secondAttribute="centerX" id="gvK-Md-Wbi"/>
                             <constraint firstItem="JNP-W4-hLD" firstAttribute="top" secondItem="oB7-aj-9Ec" secondAttribute="bottom" constant="22" id="h1G-vS-oQU"/>
                             <constraint firstItem="JNP-W4-hLD" firstAttribute="centerX" secondItem="5Pp-pr-A9l" secondAttribute="centerX" id="jht-Vj-Mpu"/>
                         </constraints>
@@ -112,13 +117,15 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addupdateButton" destination="JNP-W4-hLD" id="Bqr-1S-bj6"/>
+                        <outlet property="deleteButton" destination="Xj7-as-TC6" id="vMf-CW-plP"/>
                         <outlet property="partImageView" destination="cUB-6B-jCv" id="Suf-Gj-mvj"/>
                         <outlet property="titleTextField" destination="oB7-aj-9Ec" id="c1u-5R-QC4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gP5-aB-M4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="139"/>
+            <point key="canvasLocation" x="1892" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b73-Vi-Gww">

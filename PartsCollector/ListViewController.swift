@@ -31,10 +31,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         do {
         parts45 = try context.fetch(Parts.fetchRequest())
-            print(parts45)
+            
             listTableView25.reloadData()
         } catch {
-            
+            print("rrrrrrrrrrrrrrrrrrrrrr")
         }
         
     }
@@ -56,7 +56,42 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let part99 = parts45[indexPath.row]
+        
+        performSegue(withIdentifier: "partSegue", sender: part99)
+        
+        
+        
+    }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            let game = parts45[indexPath.row]
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            context.delete(game)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            do{
+                parts45 = try context.fetch(Parts.fetchRequest())
+                listTableView25.reloadData()
+            } catch {}
+        }
+    }
+    
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! CreatePartViewController
+        nextVC.part = sender as? Parts
+    }
     
     
 }
